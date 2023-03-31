@@ -43,6 +43,11 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # Output it to the screen as a table
 streamlit.dataframe(fruityvice_normalized)
 
+
+#Stopping the app from adding rows to the fruit_load_list table
+streamlit.stop()
+
+
 # importing libraries
 import snowflake.connector
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
