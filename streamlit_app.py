@@ -49,9 +49,9 @@ try:
 except URLError as e:
     streamlit.error()
 
- streamlit.header('Fruityvice Fruit Advice')
+streamlit.header('Fruityvice Fruit Advice')
       
- streamlit.write('The user entered', fruit_choice)
+streamlit.write('The user entered', fruit_choice)
 
 
 #Stopping the app from adding rows to the fruit_load_list table
