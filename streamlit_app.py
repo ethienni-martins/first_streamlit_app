@@ -89,4 +89,3 @@ if streamlit.button('Add a Fruit to the list'):
 
 #Stopping the app from adding rows to the fruit_load_list table
 streamlit.stop()
-
