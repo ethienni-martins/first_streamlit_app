@@ -59,10 +59,6 @@ except URLError as e:
     
 streamlit.write('The user entered', fruit_choice)
 
-#Stopping the app from adding rows to the fruit_load_list table
-streamlit.stop()
-
-
 streamlit.header("The fruit load list contains:")
 #Snowflake-related functions
 def get_fruit_load_list():
@@ -77,6 +73,8 @@ if streamlit.button('Get Fruit Load List'):
   my_data_rows = get_fruit_load_list()
   streamlit.dataframe(my_data_rows)
 
+#Stopping the app from adding rows to the fruit_load_list table
+streamlit.stop()
   
 streamlit.dataframe(my_data_rows)
 # Let the end user to add a fruit to the list
