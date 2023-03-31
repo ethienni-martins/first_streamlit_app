@@ -35,24 +35,29 @@ streamlit.text(fruityvice_response)
 
 #New section to display fruityvice api response
 #changes to the api response section
+# Creating and organizing the functions
+def get_fruityvice_data (this_fruit_choice):
+  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+ fruit_choice)
+  # Take the json version of the response and normalize it
+  fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+  return fruityvice_normalized
+
+#displaying the api response
+streamlit.header('Fruityvice Fruit Advice')
 try:
   fruit_choice = streamlit.text_input('What fruit would like information about?','Kiwi')
   if not fruit_choice:
     streamlit.error("Please, select a fruit to receive information about.")
   else:
-    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+ fruit_choice)
-    # Take the json version of the response and normalize it
-    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+    back_from_function = get_fruityvice_data(fruit_choice)
     # Output it to the screen as a table
-    streamlit.dataframe(fruityvice_normalized)
-    
+    streamlit.dataframe(back_from_function)
+       
 except URLError as e:
     streamlit.error()
 
-streamlit.header('Fruityvice Fruit Advice')
-      
+    
 streamlit.write('The user entered', fruit_choice)
-
 
 #Stopping the app from adding rows to the fruit_load_list table
 streamlit.stop()
